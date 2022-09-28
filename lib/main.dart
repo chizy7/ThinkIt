@@ -1,7 +1,11 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:thinkit/LandingPage/index.dart';
 import 'package:thinkit/LandingPage/landingpage.dart';
+import 'package:thinkit/LandingPage/AboutPage.dart';
+import 'package:thinkit/LandingPage/index.dart';
+
 import 'package:thinkit/navbar/navbar.dart';
 
 void main() {
@@ -27,25 +31,26 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/thinkit_bg.png'), fit: BoxFit.cover)),
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(color: Colors.green),
+      // decoration: const BoxDecoration(
+      //     image: DecorationImage(
+      //   image: AssetImage('assets/thinkit_bg.png'),
+      // )),
       child: SingleChildScrollView(
         child: Column(children: [
           Container(
-              margin: const EdgeInsets.all(15.0),
-              padding: const EdgeInsets.all(3.0),
-              decoration: BoxDecoration(color: Colors.pink),
-              child: navbar()),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-            child: Container(
-                margin: const EdgeInsets.all(3.0),
-                padding: const EdgeInsets.all(3.0),
-                decoration: BoxDecoration(color: Colors.pink),
-                child: LandingPage()),
-          )
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
+            // decoration: BoxDecoration(color: Colors.red),
+            child: LandingPage(),
+          ),
+          Container(
+            child: AboutPage(),
+          ),
+          Container(
+            child: index(),
+          ),
         ]),
       ),
     ));
