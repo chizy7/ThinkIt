@@ -1,58 +1,63 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:thinkit/LandingPage/index.dart';
-import 'package:thinkit/LandingPage/landingpage.dart';
-import 'package:thinkit/LandingPage/AboutPage.dart';
-import 'package:thinkit/LandingPage/index.dart';
-
 import 'package:thinkit/navbar/navbar.dart';
+import 'package:thinkit/Views/HomeIntro.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(thinkit());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class thinkit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Think It!',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: MyHomePage(),
+      home: HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(color: Colors.green),
-      // decoration: const BoxDecoration(
-      //     image: DecorationImage(
-      //   image: AssetImage('assets/thinkit_bg.png'),
-      // )),
-      child: SingleChildScrollView(
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.all(15.0),
-            padding: const EdgeInsets.all(15.0),
-            // decoration: BoxDecoration(color: Colors.red),
-            child: LandingPage(),
-          ),
-          Container(
-            child: AboutPage(),
-          ),
-          Container(
-            child: index(),
-          ),
-        ]),
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+              Colors.orange,
+              Colors.yellow,
+            ])),
+        child: Column(
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            Container(
+              margin: const EdgeInsets.all(15.0),
+              // padding: const EdgeInsets.all(15.0), this is redundant as its the over lay
+              decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.9),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Column(children: [
+                Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
+                  child: Navbar(),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
+                  //   padding:
+                  //       EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+
+                  child: HomeIntro(),
+                ),
+              ]),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
