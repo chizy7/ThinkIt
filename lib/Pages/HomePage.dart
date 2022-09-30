@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/thinkit_bg.png'),
                 fit: BoxFit.cover)),
@@ -30,8 +30,17 @@ class HomePage extends StatelessWidget {
                 margin: const EdgeInsets.all(15.0),
                 // padding: const EdgeInsets.all(15.0), this is redundant as its the over lay
                 decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(20)),
+                  color: Colors.white.withOpacity(0.9),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 1),
+                      blurRadius: 5,
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  ],
+                ),
+
                 child: Column(children: [
                   Container(
                     margin: const EdgeInsets.all(15.0),
@@ -49,26 +58,50 @@ class HomePage extends StatelessWidget {
                 ]),
               ),
               Container(
+                // margin: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 1),
+                      blurRadius: 5,
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  ],
                 ),
                 child: Column(
                   children: [
                     Container(
-                        margin: const EdgeInsets.all(15.0),
-                        padding: const EdgeInsets.all(15.0),
-                        child: HomeBody()),
-                    Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                        ),
-                        child: Container(
-                            margin: const EdgeInsets.all(15.0),
-                            padding: const EdgeInsets.all(15.0),
-                            child: Footer())),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Image.asset('assets/images/Thinker.png'),
+                          ),
+                          Expanded(
+                            child: HomeBody(),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
+              Container(
+                height: 10,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 185, 185, 185),
+                ),
+              ),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.grey,
+                  ),
+                  child: Container(
+                      margin: const EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(15.0),
+                      child: Footer())),
             ],
           ),
         ),
