@@ -25,8 +25,8 @@ class thinkit extends StatelessWidget {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             return HomePage(
-              title: 'Flutter Demo',
-            );
+                //title: 'Flutter Demo',
+                );
           }
           return CircularProgressIndicator();
         },
