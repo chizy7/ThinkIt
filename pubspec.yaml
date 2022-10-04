@@ -75,6 +75,7 @@ flutter:
     - assets/images/prag_button.png
     - assets/images/realist_button.png
     - assets/images/synthesist_button.png
+    - assets/images/PragmatistResult.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

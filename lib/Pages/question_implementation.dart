@@ -33,13 +33,14 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
   var _endOfQuiz = false;
   var _isQuizVisible = true;
   // variables that will be pushed to the results page
-  var _synthesistPercentage = 0;
-  var _idealistPercentage = 0;
-  var _pragmatistPercentage = 0;
-  var _analystPercentage = 0;
-  var _realistPercentage = 0;
+  var synthesistPercentage = 0;
+  var idealistPercentage = 0;
+  var pragmatistPercentage = 0;
+  var analystPercentage = 0;
+  var realistPercentage = 0;
 
   final _questionsTotal = Resources.questionList.length;
+
 /**********************END VARIABLE INITIALIZATIONS****************************/
 
 /*************************QUESTIONS HELPER FUNCTIONS***************************/
@@ -144,15 +145,27 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
     });
   }
 
+  /*
   // get results in percentages
   void _getResults() {
     setState(() {
-      _synthesistPercentage = (_synthesistCounter * 100) ~/ 10;
-      _idealistPercentage = (_idealistCounter * 100) ~/ 10;
-      _pragmatistPercentage = (_pragmatistCounter * 100) ~/ 10;
-      _analystPercentage = (_analystCounter * 100) ~/ 10;
-      _realistPercentage = (_realistCounter * 100) ~/ 10;
+      synthesistPercentage = (_synthesistCounter * 100) ~/ 10;
+      idealistPercentage = (_idealistCounter * 100) ~/ 10;
+      pragmatistPercentage = (_pragmatistCounter * 100) ~/ 10;
+      analystPercentage = (_analystCounter * 100) ~/ 10;
+      realistPercentage = (_realistCounter * 100) ~/ 10;
     });
+  }
+  */
+  List<int> get quizResults {
+    final List<int> resultList = [
+      synthesistPercentage = (_synthesistCounter * 100) ~/ 10,
+      idealistPercentage = (_idealistCounter * 100) ~/ 10,
+      pragmatistPercentage = (_pragmatistCounter * 100) ~/ 10,
+      analystPercentage = (_analystCounter * 100) ~/ 10,
+      realistPercentage = (_realistCounter * 100) ~/ 10,
+    ];
+    return resultList;
   }
 
 /***********************END QUESTIONS HELPER FUNCTIONS*************************/
@@ -295,10 +308,12 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
                               // Call quiz end function
                               // The values here will be pushed to the results
                               // page
-                              _getResults();
-
-                              // Syeda added page navigation to results
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ResultsPage()));
+                              //_getResults();
+                              print(quizResults);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => ResultsPage(quizResults)),
+                              );
                             },
                             style: OutlinedButton.styleFrom(
                               shape: const StadiumBorder(),
