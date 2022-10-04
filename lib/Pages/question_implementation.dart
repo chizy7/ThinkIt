@@ -8,6 +8,7 @@ import 'package:thinkit/Components/question_page/question_format.dart';
 import 'package:thinkit/Components/question_page/quiz_outroduction.dart';
 import 'package:thinkit/Components/question_page/quiz_introduction.dart';
 import 'package:thinkit/Components/question_page/question_resources.dart';
+import 'package:thinkit/Pages/ResultsPage.dart';
 
 class QuestionImplementation extends StatefulWidget {
   @override
@@ -295,6 +296,9 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
                               // The values here will be pushed to the results
                               // page
                               _getResults();
+
+                              // Syeda added page navigation to results
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ResultsPage()));
                             },
                             style: OutlinedButton.styleFrom(
                               shape: const StadiumBorder(),
