@@ -1,10 +1,17 @@
+// general libraries
 import 'package:flutter/material.dart';
 import 'package:thinkit/Components/Navbar.dart';
 import 'package:thinkit/Components/HomeIntro.dart';
 import 'package:thinkit/Components/HomeBody.dart';
 import 'package:thinkit/Components/Footer.dart';
 
+//Firebase Database libraries
+import 'package:firebase_database/firebase_database.dart';
+
 class HomePage extends StatelessWidget {
+  // FirebaseDatabase database = FirebaseDatabase.instance;
+  DatabaseReference ref = FirebaseDatabase.instance.ref();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
