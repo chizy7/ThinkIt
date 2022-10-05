@@ -10,12 +10,33 @@ import 'package:thinkit/Components/question_page/quiz_introduction.dart';
 import 'package:thinkit/Components/question_page/question_resources.dart';
 import 'package:thinkit/Pages/ResultsPage.dart';
 
+//firebase libs
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:thinkit/firebase_options.dart';
+
 class QuestionImplementation extends StatefulWidget {
   @override
   State<QuestionImplementation> createState() => _QuestionImplementationState();
 }
 
 class _QuestionImplementationState extends State<QuestionImplementation> {
+  int _displayText = 0;
+  final _database = FirebaseDatabase.instance.reference();
+
+  void initState() {
+    super.initState();
+    _activateListeners();
+  }
+
+  void _activateListeners() {
+    _database.child("test").onValue.listen((event) {
+      final int description = event.snapshot.value as int;
+      setState(() {
+        _displayText = description;
+      });
+    });
+  }
 /***************************VARIABLE INITIALIZATIONS***************************/
 
   // question and answer index variables to explore both lists
@@ -310,9 +331,19 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
                               // page
                               //_getResults();
                               print(quizResults);
+
+                              //increment the counter on the database
+                              DatabaseReference _testRef = FirebaseDatabase
+                                  .instance
+                                  .reference()
+                                  .child("test");
+                              _testRef.set(_displayText + 1);
+
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => ResultsPage(quizResults)),
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ResultsPage(quizResults)),
                               );
                             },
                             style: OutlinedButton.styleFrom(
