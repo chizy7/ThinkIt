@@ -8,6 +8,11 @@ import 'package:thinkit/Components/HomeBody.dart';
 import 'package:thinkit/Components/Footer.dart';
 
 class HomePage extends StatelessWidget {
+  bool _isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 800;
+
+  bool _isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,21 +49,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
 
-                child: Column(children: [
-                  Container(
-                    margin: const EdgeInsets.all(15.0),
-                    height: 200,
-                    child: Navbar(),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(15.0),
-                    padding: const EdgeInsets.all(15.0),
-                    //   padding:
-                    //       EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-
-                    child: HomeIntro(),
-                  ),
-                ]),
+                child: HomeIntro(),
               ),
               Container(
                 // margin: const EdgeInsets.all(15.0),
@@ -93,11 +84,12 @@ class HomePage extends StatelessWidget {
                       margin: const EdgeInsets.all(30.0),
                       child: Row(
                         children: [
-                          Expanded(
-                            // child: Image.asset('assets/images/Thinker.png'),
-                            child: Lottie.network(
-                                'https://assets9.lottiefiles.com/packages/lf20_Nwp9LyblGr.json'),
-                          ),
+                          if (_isDesktop(context))
+                            Expanded(
+                              // child: Image.asset('assets/images/Thinker.png'),
+                              child: Lottie.network(
+                                  'https://assets9.lottiefiles.com/packages/lf20_Nwp9LyblGr.json'),
+                            ),
                           Expanded(
                             child: HomeBody(),
                           ),

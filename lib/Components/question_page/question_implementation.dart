@@ -2,11 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:thinkit/Components/question_page/answer_button.dart';
 import 'package:thinkit/Components/question_page/question_format.dart';
 import 'package:thinkit/Components/question_page/quiz_outroduction.dart';
 import 'package:thinkit/Components/question_page/quiz_introduction.dart';
 import 'package:thinkit/Components/question_page/question_resources.dart';
+import 'package:thinkit/Pages/ResultsPage.dart';
+
+//firebase libs
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:thinkit/firebase_options.dart';
 
 class QuestionImplementation extends StatefulWidget {
   @override
@@ -14,6 +21,22 @@ class QuestionImplementation extends StatefulWidget {
 }
 
 class _QuestionImplementationState extends State<QuestionImplementation> {
+  int _displayText = 0;
+  final _database = FirebaseDatabase.instance.reference();
+
+  void initState() {
+    super.initState();
+    _activateListeners();
+  }
+
+  void _activateListeners() {
+    _database.child("test").onValue.listen((event) {
+      final int description = event.snapshot.value as int;
+      setState(() {
+        _displayText = description;
+      });
+    });
+  }
 /***************************VARIABLE INITIALIZATIONS***************************/
 
   // question and answer index variables to explore both lists
@@ -31,13 +54,14 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
   var _endOfQuiz = false;
   var _isQuizVisible = true;
   // variables that will be pushed to the results page
-  var _synthesistPercentage = 0;
-  var _idealistPercentage = 0;
-  var _pragmatistPercentage = 0;
-  var _analystPercentage = 0;
-  var _realistPercentage = 0;
+  var synthesistPercentage = 0;
+  var idealistPercentage = 0;
+  var pragmatistPercentage = 0;
+  var analystPercentage = 0;
+  var realistPercentage = 0;
 
   final _questionsTotal = Resources.questionList.length;
+
 /**********************END VARIABLE INITIALIZATIONS****************************/
 
 /*************************QUESTIONS HELPER FUNCTIONS***************************/
@@ -142,15 +166,27 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
     });
   }
 
+  /*
   // get results in percentages
   void _getResults() {
     setState(() {
-      _synthesistPercentage = (_synthesistCounter * 100) ~/ 10;
-      _idealistPercentage = (_idealistCounter * 100) ~/ 10;
-      _pragmatistPercentage = (_pragmatistCounter * 100) ~/ 10;
-      _analystPercentage = (_analystCounter * 100) ~/ 10;
-      _realistPercentage = (_realistCounter * 100) ~/ 10;
+      synthesistPercentage = (_synthesistCounter * 100) ~/ 10;
+      idealistPercentage = (_idealistCounter * 100) ~/ 10;
+      pragmatistPercentage = (_pragmatistCounter * 100) ~/ 10;
+      analystPercentage = (_analystCounter * 100) ~/ 10;
+      realistPercentage = (_realistCounter * 100) ~/ 10;
     });
+  }
+  */
+  List<int> get quizResults {
+    final List<int> resultList = [
+      synthesistPercentage = (_synthesistCounter * 100) ~/ 10,
+      idealistPercentage = (_idealistCounter * 100) ~/ 10,
+      pragmatistPercentage = (_pragmatistCounter * 100) ~/ 10,
+      analystPercentage = (_analystCounter * 100) ~/ 10,
+      realistPercentage = (_realistCounter * 100) ~/ 10,
+    ];
+    return resultList;
   }
 
 /***********************END QUESTIONS HELPER FUNCTIONS*************************/
@@ -177,7 +213,7 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
           child: Column(
             children: [
               // quiz introduction is implemented here
-              Introduction(),
+              // Introduction(),
               // each sized box gives us space between widgets in columns
               const SizedBox(
                 height: 30,
@@ -293,7 +329,22 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
                               // Call quiz end function
                               // The values here will be pushed to the results
                               // page
-                              _getResults();
+                              //_getResults();
+                              print(quizResults);
+
+                              //increment the counter on the database
+                              DatabaseReference _testRef = FirebaseDatabase
+                                  .instance
+                                  .reference()
+                                  .child("test");
+                              _testRef.set(_displayText + 1);
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ResultsPage(quizResults)),
+                              );
                             },
                             style: OutlinedButton.styleFrom(
                               shape: const StadiumBorder(),

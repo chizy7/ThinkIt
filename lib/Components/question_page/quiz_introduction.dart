@@ -14,6 +14,7 @@ class Introduction extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Container(
+        margin: const EdgeInsets.all(15.0),
         width: 1100,
         decoration: const BoxDecoration(
           color: Colors.white,
