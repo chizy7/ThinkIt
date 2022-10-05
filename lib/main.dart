@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:thinkit/Pages/HomePage.dart';
+import 'package:thinkit/firebase_options.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -8,7 +9,9 @@ void main() {
 }
 
 class thinkit extends StatelessWidget {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +23,13 @@ class thinkit extends StatelessWidget {
       home: FutureBuilder(
         future: _initialization,
         builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            print("Error");
-          }
           if (snapshot.connectionState == ConnectionState.done) {
             return HomePage(
                 //title: 'Flutter Demo',
                 );
+          } else if (snapshot.hasError) {
+            print("Error");
+            return Text("there is an issue");
           }
           return CircularProgressIndicator();
         },
