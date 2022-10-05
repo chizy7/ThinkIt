@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:thinkit/Components/navbar.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeBody extends StatelessWidget {
   @override
@@ -22,34 +23,48 @@ class HomeBody extends StatelessWidget {
     );
   }
 
-  List<Widget> pageChildren(double width) {
+  List<Widget> pageChildren(double all) {
     return <Widget>[
       Container(
-        child: Column(
-          children: [
-            Container(
-              child: const Text(
-                "Test The Way You Think!",
-                style: TextStyle(
+        alignment: Alignment.center,
+        height: all,
+        decoration: BoxDecoration(
+            color: Color.fromARGB(255, 240, 125, 163).withOpacity(0.8),
+            borderRadius: BorderRadius.circular(20)),
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(15.0),
+                child: const AutoSizeText(
+                  "Test The Way You Think!",
+                  style: TextStyle(
+                      fontSize: 40.0,
+                      fontFamily: 'Aleo',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                  maxLines: 3,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(15.0),
+                width: all,
+                child: const AutoSizeText(
+                  'We employ different ways of thinking. Some of us take a creative approach, while others are more analytic; some are focused on the short-term,while others think about the long-term. While weall have unique minds, our tendencies have been summed up into five recognized thinking styles: synthesists - the creative thinkers; idealists - the goal-setters; pragmatists - the logical thinkers; analysts - the rational intellectuals; realists - the perfect problem-solvers. Which type of thinker are you?',
+                  style: TextStyle(
                     fontFamily: 'Aleo',
                     fontWeight: FontWeight.bold,
-                    fontSize: 40.0,
-                    color: Colors.black),
+                    fontSize: 50.0,
+                    color: Colors.black,
+                  ),
+                  maxLines: 10,
+                ),
               ),
-            ),
-            Container(
-              child: const Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-                style: TextStyle(
-                    // fontFamily: 'Aleo',
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 24.0,
-                    color: Colors.black),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      )
     ];
   }
 }
