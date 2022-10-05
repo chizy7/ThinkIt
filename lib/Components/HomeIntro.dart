@@ -4,7 +4,34 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:thinkit/Components/navbar.dart';
 import 'package:thinkit/Pages/question_implementation.dart';
 
-class HomeIntro extends StatelessWidget {
+//firebase libs
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:thinkit/firebase_options.dart';
+
+class HomeIntro extends StatefulWidget {
+  @override
+  State<HomeIntro> createState() => HomeIntroWidget();
+}
+
+class HomeIntroWidget extends State<HomeIntro> {
+  int _displayText = 0;
+  final _database = FirebaseDatabase.instance.reference();
+
+  void initState() {
+    super.initState();
+    _activateListeners();
+  }
+
+  void _activateListeners() {
+    _database.child("test").onValue.listen((event) {
+      final int description = event.snapshot.value as int;
+      setState(() {
+        _displayText = description;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -95,5 +122,11 @@ class HomeIntro extends StatelessWidget {
         ),
       ),
     ];
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }
