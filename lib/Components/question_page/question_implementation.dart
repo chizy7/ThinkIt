@@ -51,8 +51,9 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
   // end quiz variables
   // endOfQuiz will be used to determine visibility of widgets when quiz ends
   // isQuizVisible will be used for quiz visibility
+  var _isIntroVisible = true;
   var _endOfQuiz = false;
-  var _isQuizVisible = true;
+  var _isQuizVisible = false;
   // variables that will be pushed to the results page
   var synthesistPercentage = 0;
   var idealistPercentage = 0;
@@ -72,6 +73,16 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
  * The question and answer counters stop working when the questions number
  * matches the length of the list 
  */
+
+  void _beginQuiz() {
+    setState(() {
+      // begin quiz
+      // set introduction visibility to false
+      _isIntroVisible = false;
+      // set quiz visibility to true
+      _isQuizVisible = true;
+    });
+  }
 
   void _answerSynthetist() {
     setState(() {
@@ -213,10 +224,45 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
           child: Column(
             children: [
               // quiz introduction is implemented here
-              // Introduction(),
-              // each sized box gives us space between widgets in columns
-              const SizedBox(
-                height: 30,
+              Visibility(
+                visible: _isIntroVisible,
+                // Quiz introduction container
+                child: Container(
+                  width: 1100,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Introduction(),
+                      OutlinedButton(
+                        onPressed: () {
+                          _beginQuiz();
+                        },
+                        style: OutlinedButton.styleFrom(
+                          shape: const StadiumBorder(),
+                          side: const BorderSide(color: Colors.pinkAccent),
+                        ),
+                        child: Text(
+                          "I Understand! Start The Quiz",
+                          style: GoogleFonts.architectsDaughter(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.lightBlueAccent,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                    ],
+                  ),
+                ),
               ),
               // Quiz is visible until all the questions are done
               // At the end, the quiz widget should disappear
@@ -333,17 +379,12 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
                               print(quizResults);
 
                               //increment the counter on the database
-                              DatabaseReference _testRef = FirebaseDatabase
-                                  .instance
-                                  .reference()
-                                  .child("test");
+                              DatabaseReference _testRef = FirebaseDatabase.instance.reference().child("test");
                               _testRef.set(_displayText + 1);
 
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ResultsPage(quizResults)),
+                                MaterialPageRoute(builder: (context) => ResultsPage(quizResults)),
                               );
                             },
                             style: OutlinedButton.styleFrom(

@@ -6,8 +6,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:lottie/lottie.dart';
 import 'package:thinkit/Components/navbar.dart';
-import 'package:thinkit/Pages/question_implementation.dart';
-import "package:thinkit/Pages/introPage.dart";
+import 'package:thinkit/Components/question_page/question_implementation.dart';
 
 class HomeIntro extends StatelessWidget {
   @override
@@ -93,7 +92,7 @@ class HomeIntro extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => IntroPage()),
+                                  builder: (context) => QuestionImplementation()),
                             );
                           },
                           child: Image.asset(

@@ -38,7 +38,7 @@ class Outroduction extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              child: Text("Please click the button below to find out your thinking style",
+              child: Text("Please click the button below to find out your thinking style.",
                   style: GoogleFonts.architectsDaughter(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w100,
