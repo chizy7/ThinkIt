@@ -8,10 +8,21 @@ void main() {
   runApp(thinkit());
 }
 
-class thinkit extends StatelessWidget {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+class thinkit extends StatefulWidget {
+  @override
+  State<thinkit> createState() => _thinkitState();
+}
+
+class _thinkitState extends State<thinkit> {
+  late Future<FirebaseApp> _initialization;
+
+  @override
+  void initState() {
+    super.initState();
+    _initialization = Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

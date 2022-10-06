@@ -1,5 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, unused_element, slash_for_doc_comments, unused_field
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,8 +23,9 @@ class QuestionImplementation extends StatefulWidget {
 }
 
 class _QuestionImplementationState extends State<QuestionImplementation> {
-  int _displayText = 0;
+  int _displayText = 1;
   final _database = FirebaseDatabase.instance.reference();
+  late StreamSubscription _Stream;
 
   void initState() {
     super.initState();
@@ -30,7 +33,7 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
   }
 
   void _activateListeners() {
-    _database.child("test").onValue.listen((event) {
+    _Stream = _database.child("test").onValue.listen((event) {
       final int description = event.snapshot.value as int;
       setState(() {
         _displayText = description;
@@ -379,12 +382,17 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
                               print(quizResults);
 
                               //increment the counter on the database
-                              DatabaseReference _testRef = FirebaseDatabase.instance.reference().child("test");
+                              DatabaseReference _testRef = FirebaseDatabase
+                                  .instance
+                                  .reference()
+                                  .child("test");
                               _testRef.set(_displayText + 1);
 
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => ResultsPage(quizResults)),
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ResultsPage(quizResults)),
                               );
                             },
                             style: OutlinedButton.styleFrom(
@@ -414,5 +422,11 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
         ),
       ),
     );
+  }
+
+  @override
+  void deactivate() {
+    _Stream.cancel();
+    super.deactivate();
   }
 }

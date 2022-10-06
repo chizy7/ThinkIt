@@ -51,14 +51,22 @@ class HomeBody extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 width: all,
                 child: const AutoSizeText(
-                  'We employ different ways of thinking. Some of us take a creative approach, while others are more analytic; some are focused on the short-term,while others think about the long-term. While weall have unique minds, our tendencies have been summed up into five recognized thinking styles: synthesists - the creative thinkers; idealists - the goal-setters; pragmatists - the logical thinkers; analysts - the rational intellectuals; realists - the perfect problem-solvers. Which type of thinker are you?',
+                  'We employ different ways of thinking. Some of us take a creative approach, while others are more analytic; some are focused on the short-term,while others think about the long-term. While weall have unique minds, our tendencies have been summed up into five recognized thinking styles:'
+                  '\n'
+                  '\nsynthesists - the creative thinkers'
+                  '\nidealists - the goal-setters'
+                  '\npragmatists - the logical thinkers'
+                  '\nanalysts - the rational intellectuals'
+                  '\nrealists - the perfect problem-solvers'
+                  '\n'
+                  'Which type of thinker are you?',
                   style: TextStyle(
                     fontFamily: 'Aleo',
                     fontWeight: FontWeight.bold,
                     fontSize: 50.0,
                     color: Colors.black,
                   ),
-                  maxLines: 10,
+                  maxLines: 12,
                 ),
               ),
             ],
