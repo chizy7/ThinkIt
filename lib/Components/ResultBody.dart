@@ -15,95 +15,91 @@ class ResultsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth > 800) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: pageChildren(constraints.biggest.width),
-          );
-        } else {
-          return Column(
-            children: pageChildren(constraints.biggest.width),
-          );
-        }
+        return pageChildren(constraints.biggest.width);
       },
     );
   }
 
-  List<Widget> pageChildren(double all) {
-    return <Widget>[
-      Container(
-        constraints: const BoxConstraints(
-                                maxHeight: 600,
-                                maxWidth: 650,
-                                minWidth: 650,
-                                minHeight: 400),
-        margin: const EdgeInsets.all(15.0),
-        alignment: Alignment.center,
-        height: all,
-        decoration: BoxDecoration(
-                           
-            color: Color.fromARGB(255, 240, 125, 163).withOpacity(0.8),
-            borderRadius: BorderRadius.circular(20)),
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(15.0),
-                child: const AutoSizeText(
-                  "Press the buttons to read about your thinking style!",
-                  style: TextStyle(
-                      fontSize: 40.0,
-                      fontFamily: 'Aleo',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                    maxLines: 1,
-                ),
+  Container pageChildren(double all) {
+    return Container(
+      // constraints: const BoxConstraints(
+      //     maxHeight: 600, maxWidth: 650, minWidth: 650, minHeight: 400),
+      // margin: const EdgeInsets.all(15.0),
+      // alignment: Alignment.center,
+      // height: all,
+      decoration: BoxDecoration(
+          color: Color.fromARGB(255, 240, 125, 163).withOpacity(0.8),
+          borderRadius: BorderRadius.circular(20)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            flex: 0,
+            child: Container(
+              padding: const EdgeInsets.all(15.0),
+              child: const AutoSizeText(
+                "Press the buttons to read about \nyour thinking style!",
+                style: TextStyle(
+                    fontSize: 40.0,
+                    fontFamily: 'Aleo',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+                maxLines: 1,
               ),
-
-              IconButton(
-                onPressed: ()=>update("images/IdealistResult.png"),
-                icon: Image.asset('images/idealist_button.png'),
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(maxHeight: all/9, maxWidth: all/1.5),
-                iconSize: all/3,
-              ),
-
-              IconButton(
-                onPressed: ()=>update("images/SynthesistResult.png"),
-                icon: Image.asset('images/synthesist_button.png'),
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(maxHeight: all/9, maxWidth: all/1.5),
-                iconSize: all/3,
-              ),
-
-              IconButton(
-                onPressed: ()=>update("images/PragmatistResult.png"),
-                icon: Image.asset('images/prag_button.png'),
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(maxHeight: all/9, maxWidth: all/1.5),
-                iconSize: all/3,
-              ),
-
-              IconButton(
-                onPressed: ()=>update("images/AnalystResult.png"),
-                icon: Image.asset('images/analyst_button.png'),
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(maxHeight: all/9, maxWidth: all/1.5),
-                iconSize: all/3,
-              ),
-
-              IconButton(
-                onPressed: ()=>update("images/RealistResult.png"),
-                icon: Image.asset('images/realist_button.png'),
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(maxHeight: all/9, maxWidth: all/1.5),
-                iconSize: all/3,
-              ),
-            ],
+            ),
           ),
-        ),
-      )
-    ];
+          Expanded(
+            flex: 0,
+            child: InkWell(
+              onTap: () => update("images/IdealistResult.png"),
+              child: Image.asset(
+                'images/idealist_button.png',
+                width: 150,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 0,
+            child: InkWell(
+              onTap: () => update("images/SynthesistResult.png"),
+              child: Image.asset(
+                'images/synthesist_button.png',
+                width: 150,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 0,
+            child: InkWell(
+              onTap: () => update("images/PragmatistResult.png"),
+              child: Image.asset(
+                'images/prag_button.png',
+                width: 150,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 0,
+            child: InkWell(
+              onTap: () => update("images/AnalystResult.png"),
+              child: Image.asset(
+                'images/analyst_button.png',
+                width: 150,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 0,
+            child: InkWell(
+              onTap: () => update("images/RealistResult.png"),
+              child: Image.asset(
+                'images/realist_button.png',
+                width: 150,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -14,10 +14,10 @@ class resultsPage extends StatefulWidget {
   State<resultsPage> createState() => ResultsPageState();
 }
 
-class ResultsPageState extends State<resultsPage>{
+class ResultsPageState extends State<resultsPage> {
   String resultsImg = 'images/IdealistResult.png';
 
-    void _update(String img) {
+  void _update(String img) {
     setState(() => resultsImg = img);
   }
 
@@ -29,15 +29,6 @@ class ResultsPageState extends State<resultsPage>{
             image: DecorationImage(
                 image: AssetImage('assets/images/thinkit_bg.png'),
                 fit: BoxFit.cover)),
-
-        // decoration: const BoxDecoration(
-        //     gradient: LinearGradient(
-        //         begin: Alignment.topLeft,
-        //         end: Alignment.bottomRight,
-        //         colors: [
-        //       Colors.orange,
-        //       Colors.yellow,
-        //     ])),
         child: SingleChildScrollView(
           child: Column(
             // ignore: prefer_const_literals_to_create_immutables
@@ -57,77 +48,36 @@ class ResultsPageState extends State<resultsPage>{
                   ],
                 ),
 
-                child: Column(children: [
-                  Container(
-                    margin: const EdgeInsets.all(15.0),
-                    height: 200,
-                    child: Navbar(),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(15.0),
-                    padding: const EdgeInsets.all(15.0),
-                    //   padding:
-                    //       EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                child: Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
+                  //   padding:
+                  //       EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
 
-                    child: ResultsIntro(widget.resultList),
-                  ),
-                ]),
+                  child: ResultsIntro(widget.resultList),
+                ),
               ),
               Container(
-                // margin: const EdgeInsets.all(15.0),
-                // padding: const EdgeInsets.all(15.0),
-                // decoration: BoxDecoration(
-                //   color: Colors.white,
-                //   boxShadow: [
-                //     BoxShadow(
-                //       offset: const Offset(0, 1),
-                //       blurRadius: 5,
-                //       color: Colors.black.withOpacity(0.3),
-                //     ),
-                //   ],
-                // ),
-                margin: const EdgeInsets.all(40.0),
-                // padding: const EdgeInsets.all(15.0), this is redundant as its the over lay
-                // decoration: BoxDecoration(
-                //   color: Colors.white.withOpacity(0.9),
-                //   borderRadius: BorderRadius.circular(20),
-                //   boxShadow: [
-                //     BoxShadow(
-                //       offset: const Offset(0, 1),
-                //       blurRadius: 5,
-                //       color: Colors.black.withOpacity(0.3),
-                //     ),
-                //   ],
-                // ),
-
-                child: Column(
+                // margin: const EdgeInsets.all(40.0),
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.all(30.0),
-                      
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Expanded(
-                            // child: Image.asset('assets/images/Thinker.png'),
-                            child: Container(
-                              constraints: const BoxConstraints(
-                                maxHeight: 650,
-                                maxWidth: 650,
-                                minWidth: 650,
-                                minHeight: 650),
-
-                                decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(resultsImg),
-                                )),
-                           )
-                          ),
-                          Expanded(
-                            child: ResultsBody(update: _update),
-                          ),
-                        ],
-                      ),
+                    Expanded(
+                        flex: 0,
+                        child: Container(
+                          constraints: const BoxConstraints(
+                              maxHeight: 650,
+                              maxWidth: 650,
+                              minWidth: 650,
+                              minHeight: 650),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            image: AssetImage(resultsImg),
+                          )),
+                        )),
+                    Expanded(
+                      flex: 0,
+                      child: ResultsBody(update: _update),
                     ),
                   ],
                 ),
@@ -138,6 +88,7 @@ class ResultsPageState extends State<resultsPage>{
                 ),
               ),
               Container(
+                  margin: const EdgeInsets.only(top: 50.0),
                   decoration: const BoxDecoration(
                     color: Colors.pink,
                   ),
@@ -164,5 +115,3 @@ String getResult(int choice) {
 
   return assetNames[choice];
 }
-
-

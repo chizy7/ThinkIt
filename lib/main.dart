@@ -35,7 +35,7 @@ class _thinkitState extends State<thinkit> {
         future: _initialization,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return HomePage(
+            return HomePage(//fix this when done to HomePage
                 //title: 'Flutter Demo',
                 );
           } else if (snapshot.hasError) {
