@@ -5,6 +5,7 @@ import 'package:thinkit/Components/Navbar.dart';
 import 'package:thinkit/Components/ResultsIntro.dart';
 import 'package:thinkit/Components/ResultBody.dart';
 import 'package:thinkit/Components/Footer.dart';
+import 'package:thinkit/Pages/FinalPage.dart';
 
 class resultsPage extends StatefulWidget {
   final List resultList;
@@ -55,6 +56,26 @@ class ResultsPageState extends State<resultsPage> {
                   //       EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
 
                   child: ResultsIntro(widget.resultList),
+                ),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FinalPage()),
+                  );
+                },
+                style: OutlinedButton.styleFrom(
+                  shape: const StadiumBorder(),
+                  side: const BorderSide(color: Colors.pinkAccent),
+                ),
+                child: Text(
+                  "Click to View Descripition",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               // Container(
