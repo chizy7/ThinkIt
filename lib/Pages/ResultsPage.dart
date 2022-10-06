@@ -63,7 +63,7 @@ class ResultsPageState extends State<resultsPage> {
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
-                        flex: 0,
+                        flex: 4,
                         child: Container(
                           constraints: const BoxConstraints(
                               maxHeight: 650,
@@ -76,13 +76,14 @@ class ResultsPageState extends State<resultsPage> {
                           )),
                         )),
                     Expanded(
-                      flex: 0,
+                      flex: 4,
                       child: ResultsBody(update: _update),
                     ),
                   ],
                 ),
               ),
               Container(
+                // height: 30.0,
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 185, 185, 185),
                 ),

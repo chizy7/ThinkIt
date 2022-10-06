@@ -22,11 +22,12 @@ class ResultsBody extends StatelessWidget {
 
   Container pageChildren(double all) {
     return Container(
-      // constraints: const BoxConstraints(
-      //     maxHeight: 600, maxWidth: 650, minWidth: 650, minHeight: 400),
-      // margin: const EdgeInsets.all(15.0),
-      // alignment: Alignment.center,
-      // height: all,
+      constraints: const BoxConstraints(
+        maxHeight: 600,
+        maxWidth: 650,
+      ),
+      margin: const EdgeInsets.all(15.0),
+      alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Color.fromARGB(255, 240, 125, 163).withOpacity(0.8),
           borderRadius: BorderRadius.circular(20)),
@@ -54,7 +55,7 @@ class ResultsBody extends StatelessWidget {
               onTap: () => update("images/IdealistResult.png"),
               child: Image.asset(
                 'images/idealist_button.png',
-                width: 150,
+                width: 200,
               ),
             ),
           ),
@@ -64,7 +65,7 @@ class ResultsBody extends StatelessWidget {
               onTap: () => update("images/SynthesistResult.png"),
               child: Image.asset(
                 'images/synthesist_button.png',
-                width: 150,
+                width: 200,
               ),
             ),
           ),
@@ -74,7 +75,7 @@ class ResultsBody extends StatelessWidget {
               onTap: () => update("images/PragmatistResult.png"),
               child: Image.asset(
                 'images/prag_button.png',
-                width: 150,
+                width: 200,
               ),
             ),
           ),
@@ -84,7 +85,7 @@ class ResultsBody extends StatelessWidget {
               onTap: () => update("images/AnalystResult.png"),
               child: Image.asset(
                 'images/analyst_button.png',
-                width: 150,
+                width: 200,
               ),
             ),
           ),
@@ -94,7 +95,7 @@ class ResultsBody extends StatelessWidget {
               onTap: () => update("images/RealistResult.png"),
               child: Image.asset(
                 'images/realist_button.png',
-                width: 150,
+                width: 200,
               ),
             ),
           ),
