@@ -21,11 +21,11 @@ Slides: Here is the link to [Thinkit slides](https://docs.google.com/presentatio
 Here's walkthroughs of implemented user stories:
 
 <p float="left">
- <img src='https://i.imgur.com/hvHdmAo.gif' width=550 alt='Fall #1' />
- <img src='https://i.imgur.com/1ScmXR7.gif' width=550 alt='Fall #2' />
- <img src='https://i.imgur.com/o25CYth.gif' width=550 alt='Fall #3' />
- <img src='https://i.imgur.com/5YiCcSK.gif' width=550 alt='Fall #4' />
- <img src='https://i.imgur.com/ZNmY4uM.gif' width=550 alt='Fall #5' />
+ <img src='https://i.imgur.com/hvHdmAo.gif' width=450 alt='Fall #1' />
+ <img src='https://i.imgur.com/1ScmXR7.gif' width=450 alt='Fall #2' />
+ <img src='https://i.imgur.com/o25CYth.gif' width=450 alt='Fall #3' />
+ <img src='https://i.imgur.com/5YiCcSK.gif' width=450 alt='Fall #4' />
+ <img src='https://i.imgur.com/ZNmY4uM.gif' width=450 alt='Fall #5' />
 </p>
 
 ## Installation
