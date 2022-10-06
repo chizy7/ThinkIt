@@ -97,8 +97,30 @@ source $HOME/.bash_profile
 echo $PATH 
 ```
 
+Flutter provides a tool, flutter doctor to check that all the requirement of flutter development is met. It is similar to the Windows counterpath.
+
+**Step 5** - Install latest XCode, if reported by flutter doctor
+
+**Step 6** - Install latest Android SDK, if reported by flutter doctor
+
+**Step 7** - Install latest Android Studio, if reported by flutter doctor
+
+**Step 8** - Start an android emulator or connect to a real android device to the system to develop android application.
+
+**Step 9** - Open iOS simulator or connect a real iPhone device to the system to develop iOS application.
+
+**Step 10** - Install Flutter and Dart plugin for Android Studio. It provides the startup template to create a new Flutter application, option to run and debug Flutter application in the Android studio itself, etc. 
+
+- Open Android Studio
+- Click **Preferences → Plugins**
+- Select the Flutter plugin and click install
+- Click Yes when prompted to install the Dart plugin
+- Restart Android studio.
+
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Assuming you have installed flutter and your system passes all ```flutter doctor``` tests. You can do a git clone and to run the project locally, you can open up the project in visual studio. Since this is only for flutter web, you can open up your terminal in VS Code and run the command below to launch in chrome.
+
+```flutter run -d chrome```
 
 ## Authors and acknowledgment
 - Lily Kiziriya
@@ -114,5 +136,5 @@ Use examples liberally, and show the expected output if you can. It's helpful to
 * [Development wiki](https://github.com/flutter/flutter/wiki)
 
 ## License
-For open source projects, say how it is licensed.
+License 
 
