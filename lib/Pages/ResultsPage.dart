@@ -42,6 +42,7 @@ class ResultsPageState extends State<ResultsPage> {
             ),
 
             Expanded(
+              flex: 2,
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -124,6 +125,7 @@ class ResultsPageState extends State<ResultsPage> {
 
             // Results
             Expanded(
+              flex: 2,
               child: Container(
                 constraints: const BoxConstraints(
                     maxHeight: 500,

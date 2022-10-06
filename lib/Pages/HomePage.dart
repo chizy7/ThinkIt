@@ -52,32 +52,7 @@ class HomePage extends StatelessWidget {
                 child: HomeIntro(),
               ),
               Container(
-                // margin: const EdgeInsets.all(15.0),
-                // padding: const EdgeInsets.all(15.0),
-                // decoration: BoxDecoration(
-                //   color: Colors.white,
-                //   boxShadow: [
-                //     BoxShadow(
-                //       offset: const Offset(0, 1),
-                //       blurRadius: 5,
-                //       color: Colors.black.withOpacity(0.3),
-                //     ),
-                //   ],
-                // ),
                 margin: const EdgeInsets.all(40.0),
-                // padding: const EdgeInsets.all(15.0), this is redundant as its the over lay
-                // decoration: BoxDecoration(
-                //   color: Colors.white.withOpacity(0.9),
-                //   borderRadius: BorderRadius.circular(20),
-                //   boxShadow: [
-                //     BoxShadow(
-                //       offset: const Offset(0, 1),
-                //       blurRadius: 5,
-                //       color: Colors.black.withOpacity(0.3),
-                //     ),
-                //   ],
-                // ),
-
                 child: Column(
                   children: [
                     Container(

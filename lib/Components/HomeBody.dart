@@ -26,16 +26,17 @@ class HomeBody extends StatelessWidget {
   List<Widget> pageChildren(double all) {
     return <Widget>[
       Container(
-        alignment: Alignment.center,
+        // alignment: Alignment.center,
         height: all,
         decoration: BoxDecoration(
             color: Color.fromARGB(255, 240, 125, 163).withOpacity(0.8),
             borderRadius: BorderRadius.circular(20)),
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 0,
+              child: Container(
                 padding: const EdgeInsets.all(15.0),
                 child: const AutoSizeText(
                   "Test The Way You Think!",
@@ -47,7 +48,10 @@ class HomeBody extends StatelessWidget {
                   maxLines: 3,
                 ),
               ),
-              Container(
+            ),
+            Expanded(
+              flex: 0,
+              child: Container(
                 padding: const EdgeInsets.all(15.0),
                 width: all,
                 child: const AutoSizeText(
@@ -69,8 +73,8 @@ class HomeBody extends StatelessWidget {
                   maxLines: 12,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       )
     ];
