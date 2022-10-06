@@ -1,8 +1,20 @@
 # thinkit
 
-A new Flutter project.
+Thinkit is a flutter web application where we have created a quiz that allows clients to learn about their characteristic thinking style. This online interactive quiz explores the five thinking styles posited by Allen Harrison & Robert Bramson. 
 
 ## Getting Started
+
+### User Stories
+
+#### REQUIRED
+- [x] Is it using Flutter Web?
+- [x] Does your web app work?
+- [x] Provide a test link where users can test out application
+- [x] Database included (real time database).
+
+### App Walkthrough GIF
+
+### Resources
 
 This project is a starting point for a Flutter application.
 
