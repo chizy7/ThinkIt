@@ -29,8 +29,7 @@ Here's walkthroughs of implemented user stories:
  <img src='https://i.imgur.com/1ScmXR7.gif' width=450 alt='Fall #2' />
  <img src='https://i.imgur.com/o25CYth.gif' width=450 alt='Fall #3' />
  <img src='https://i.imgur.com/5YiCcSK.gif' width=450 alt='Fall #4' />
- <img src='https://i.imgur.com/ZNmY4uM.gif' width=450 alt='Fall #5' />
- <img src='https://i.imgur.com/4f4aKbc.png' width=450 alt='Fall #6' />
+ <img src='https://i.imgur.com/4f4aKbc.png' width=450 alt='Fall #5' />
 </p>
 
 ## Installation
