@@ -57,31 +57,31 @@ class ResultsPageState extends State<resultsPage> {
                   child: ResultsIntro(widget.resultList),
                 ),
               ),
-              Container(
-                // margin: const EdgeInsets.all(40.0),
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                        flex: 4,
-                        child: Container(
-                          constraints: const BoxConstraints(
-                              maxHeight: 650,
-                              maxWidth: 650,
-                              minWidth: 650,
-                              minHeight: 650),
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                            image: AssetImage(resultsImg),
-                          )),
-                        )),
-                    Expanded(
-                      flex: 4,
-                      child: ResultsBody(update: _update),
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   // margin: const EdgeInsets.all(40.0),
+              //   child: Row(
+              //     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: [
+              //       Expanded(
+              //           flex: 4,
+              //           child: Container(
+              //             constraints: const BoxConstraints(
+              //                 maxHeight: 650,
+              //                 maxWidth: 650,
+              //                 minWidth: 650,
+              //                 minHeight: 650),
+              //             decoration: BoxDecoration(
+              //                 image: DecorationImage(
+              //               image: AssetImage(resultsImg),
+              //             )),
+              //           )),
+              //       Expanded(
+              //         flex: 4,
+              //         child: ResultsBody(update: _update),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               Container(
                 // height: 30.0,
                 decoration: const BoxDecoration(
