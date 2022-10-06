@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'dart:math';
+import 'package:lottie/lottie.dart';
+import 'package:thinkit/Components/Navbar.dart';
+import 'package:thinkit/Components/ResultsIntro.dart';
+import 'package:thinkit/Components/ResultBody.dart';
+import 'package:thinkit/Components/Footer.dart';
 
-class ResultsPage extends StatefulWidget {
+class resultsPage extends StatefulWidget {
   final List resultList;
-  const ResultsPage(this.resultList, {super.key});
+  const resultsPage(this.resultList, {super.key});
 
   @override
-  State<ResultsPage> createState() => ResultsPageState();
+  State<resultsPage> createState() => ResultsPageState();
 }
 
-class ResultsPageState extends State<ResultsPage> {
-  String currentResultImage = 'images/IdealistResult.png';
+class ResultsPageState extends State<resultsPage>{
+  String resultsImg = 'images/IdealistResult.png';
+
+    void _update(String img) {
+    setState(() => resultsImg = img);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,125 +29,124 @@ class ResultsPageState extends State<ResultsPage> {
             image: DecorationImage(
                 image: AssetImage('assets/images/thinkit_bg.png'),
                 fit: BoxFit.cover)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(40.0, 0, 0, 0),
-              child: Text(
-                "These are the results, you are:\n\n\n${widget.resultList[0].toString()}% Idealist\n\n\n${widget.resultList[1].toString()}% Synthesist\n\n\n${widget.resultList[2].toString()}% Pragmatist\n\n\n${widget.resultList[3].toString()}% Analyst\n\n\n${widget.resultList[4].toString()}% Realist",
-                style: GoogleFonts.architectsDaughter(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                    //backgroundColor: const Color.fromRGBO(200, 200, 200, 0.8),
-                    background: Paint()
-                      ..color = const Color.fromRGBO(255, 255, 255, 0.6)
-                      ..strokeWidth = 35
-                      ..strokeJoin = StrokeJoin.round
-                      ..strokeCap = StrokeCap.round
-                      ..style = PaintingStyle.stroke),
+
+        // decoration: const BoxDecoration(
+        //     gradient: LinearGradient(
+        //         begin: Alignment.topLeft,
+        //         end: Alignment.bottomRight,
+        //         colors: [
+        //       Colors.orange,
+        //       Colors.yellow,
+        //     ])),
+        child: SingleChildScrollView(
+          child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Container(
+                margin: const EdgeInsets.all(40.0),
+                // padding: const EdgeInsets.all(15.0), this is redundant as its the over lay
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.9),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 1),
+                      blurRadius: 5,
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  ],
+                ),
+
+                child: Column(children: [
+                  Container(
+                    margin: const EdgeInsets.all(15.0),
+                    height: 200,
+                    child: Navbar(),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
+                    //   padding:
+                    //       EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+
+                    child: ResultsIntro(widget.resultList),
+                  ),
+                ]),
               ),
-            ),
+              Container(
+                // margin: const EdgeInsets.all(15.0),
+                // padding: const EdgeInsets.all(15.0),
+                // decoration: BoxDecoration(
+                //   color: Colors.white,
+                //   boxShadow: [
+                //     BoxShadow(
+                //       offset: const Offset(0, 1),
+                //       blurRadius: 5,
+                //       color: Colors.black.withOpacity(0.3),
+                //     ),
+                //   ],
+                // ),
+                margin: const EdgeInsets.all(40.0),
+                // padding: const EdgeInsets.all(15.0), this is redundant as its the over lay
+                // decoration: BoxDecoration(
+                //   color: Colors.white.withOpacity(0.9),
+                //   borderRadius: BorderRadius.circular(20),
+                //   boxShadow: [
+                //     BoxShadow(
+                //       offset: const Offset(0, 1),
+                //       blurRadius: 5,
+                //       color: Colors.black.withOpacity(0.3),
+                //     ),
+                //   ],
+                // ),
 
-            Expanded(
-              flex: 2,
-              child: Container(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                  // Buttons
                   children: [
-                    // Analyst
-                    IconButton(
-                      icon: Image.asset('images/idealist_button.png'),
-                      padding: EdgeInsets.zero,
-                      constraints:
-                          const BoxConstraints(maxHeight: 75, maxWidth: 300),
-                      iconSize: 500,
-                      onPressed: () {
-                        setState(() {
-                          currentResultImage = getResult(0);
-                        });
-                      },
-                    ),
+                    Container(
+                      margin: const EdgeInsets.all(30.0),
+                      
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            // child: Image.asset('assets/images/Thinker.png'),
+                            child: Container(
+                              constraints: const BoxConstraints(
+                                maxHeight: 650,
+                                maxWidth: 650,
+                                minWidth: 650,
+                                minHeight: 650),
 
-                    // Synthesist
-                    IconButton(
-                      icon: Image.asset('images/synthesist_button.png'),
-                      padding: EdgeInsets.zero,
-                      constraints:
-                          const BoxConstraints(maxHeight: 75, maxWidth: 300),
-                      iconSize: 500,
-                      onPressed: () {
-                        setState(() {
-                          currentResultImage = getResult(1);
-                        });
-                      },
-                    ),
-
-                    // Pragmatist
-                    IconButton(
-                      icon: Image.asset('images/prag_button.png'),
-                      padding: EdgeInsets.zero,
-                      constraints:
-                          const BoxConstraints(maxHeight: 75, maxWidth: 300),
-                      iconSize: 500,
-                      onPressed: () {
-                        setState(() {
-                          currentResultImage = getResult(2);
-                        });
-                      },
-                    ),
-
-                    // Analyst
-                    IconButton(
-                      icon: Image.asset('images/analyst_button.png'),
-                      padding: EdgeInsets.zero,
-                      constraints:
-                          const BoxConstraints(maxHeight: 75, maxWidth: 300),
-                      iconSize: 500,
-                      onPressed: () {
-                        setState(() {
-                          currentResultImage = getResult(3);
-                        });
-                      },
-                    ),
-
-                    // Realist
-                    IconButton(
-                      icon: Image.asset('images/realist_button.png'),
-                      padding: EdgeInsets.zero,
-                      constraints:
-                          const BoxConstraints(maxHeight: 75, maxWidth: 300),
-                      iconSize: 500,
-                      onPressed: () {
-                        setState(() {
-                          currentResultImage = getResult(4);
-                        });
-                      },
+                                decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(resultsImg),
+                                )),
+                           )
+                          ),
+                          Expanded(
+                            child: ResultsBody(update: _update),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-
-            // Results
-            Expanded(
-              flex: 2,
-              child: Container(
-                constraints: const BoxConstraints(
-                    maxHeight: 500,
-                    maxWidth: 500,
-                    minWidth: 500,
-                    minHeight: 500),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage(currentResultImage),
-                )),
+              Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 185, 185, 185),
+                ),
               ),
-            ),
-          ],
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.pink,
+                  ),
+                  child: Container(
+                      margin: const EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(15.0),
+                      child: Footer())),
+            ],
+          ),
         ),
       ),
     );
@@ -156,3 +164,5 @@ String getResult(int choice) {
 
   return assetNames[choice];
 }
+
+

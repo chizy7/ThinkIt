@@ -392,7 +392,7 @@ class _QuestionImplementationState extends State<QuestionImplementation> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        ResultsPage(quizResults)),
+                                        resultsPage(quizResults)),
                               );
                             },
                             style: OutlinedButton.styleFrom(
