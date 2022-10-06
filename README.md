@@ -48,7 +48,8 @@ The first step is to [Install Flutter](https://flutter.dev/get-started/) for you
 
 **Step 5** - Running the above command will analyze the system and show its report as shown below 
 
-``` Doctor summary (to see all details, run flutter doctor -v):
+```
+Doctor summary (to see all details, run flutter doctor -v):
 [√] Flutter (Channel stable, v1.2.1, on Microsoft Windows [Version
 10.0.17134.706], locale en-US)
 [√] Android toolchain - develop for Android devices (Android SDK version
@@ -81,6 +82,20 @@ The report above says that all development tools are available but the device is
 To install Flutter on MacOS, you will have to follow the following steps below.
 
 **Step 1** - Assuming you have installed the latest Flutter SDK for MacOS. 
+
+**Step 2** - Unzip the zip archive in a folder, say /path/to/flutter
+
+**Step 3** - Update the system path to include flutter bin directory (in ~/.bashrc file).
+
+```  > export PATH = "$PATH:/path/to/flutter/bin"  ```
+
+**Step 4** - Enable the updated path in the current session using below command and then verify it as well. 
+
+```
+source ~/.bashrc
+source $HOME/.bash_profile
+echo $PATH 
+```
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
