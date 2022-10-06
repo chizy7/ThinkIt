@@ -290,9 +290,9 @@ class _HomeIntroImplementationState extends State<HomeIntro> {
     ];
   }
 
-  // @override
-  // void deactivate() {
-  //   _Stream.cancel();
-  //   super.deactivate();
-  // }
+  @override
+  void deactivate() {
+    _Stream.cancel();
+    super.deactivate();
+  }
 }
